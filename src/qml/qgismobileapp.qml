@@ -320,6 +320,10 @@ ApplicationWindow {
         displayToast( qsTr( "The layer %1 is read only." ).arg( currentLayer.name ) )
     }
 
+    onChangeMode: {
+        stateMachine.state = mode
+    }
+
     Component.onCompleted: focusstack.addFocusTaker( this )
   }
 
@@ -513,20 +517,6 @@ ApplicationWindow {
   Controls.Menu {
     id: mainMenu
     title: qsTr( "Main Menu" )
-
-    Controls.Menu {
-      title: qsTr( "Mode" )
-
-      Controls.MenuItem {
-        text: qsTr( "Browse" )
-        onTriggered: stateMachine.state = "browse"
-      }
-
-      Controls.MenuItem {
-        text: qsTr( "Digitize" )
-        onTriggered: stateMachine.state = "digitize"
-      }
-    }
 
     Controls.MenuItem {
       text: qsTr( "Open Project" )
