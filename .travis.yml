@@ -28,10 +28,12 @@ script:
 jobs:
   include:
     - stage: test
+      if: type = pull_request OR tag IS present
       env:
         - ARCH=armv7
 
     - stage: test
+      if: type = pull_request OR tag IS present
       env:
         - ARCH=x86
 
